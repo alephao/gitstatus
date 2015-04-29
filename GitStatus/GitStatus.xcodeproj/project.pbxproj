@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		258575631AEFD6BA0007A288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258575621AEFD6BA0007A288 /* AppDelegate.swift */; };
 		258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 258575641AEFD6BA0007A288 /* GitStatus.xcdatamodeld */; };
-		258575681AEFD6BA0007A288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258575671AEFD6BA0007A288 /* ViewController.swift */; };
+		258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258575671AEFD6BA0007A288 /* LoginViewController.swift */; };
 		2585756B1AEFD6BA0007A288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 258575691AEFD6BA0007A288 /* Main.storyboard */; };
 		2585756D1AEFD6BA0007A288 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2585756C1AEFD6BA0007A288 /* Images.xcassets */; };
 		258575701AEFD6BA0007A288 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2585756E1AEFD6BA0007A288 /* LaunchScreen.xib */; };
 		2585757C1AEFD6BA0007A288 /* GitStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2585757B1AEFD6BA0007A288 /* GitStatusTests.swift */; };
+		86CF7C991AF0FCB50003F87D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */; };
+		86CF7C9A1AF0FCB50003F87D /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C981AF0FCB50003F87D /* octicons.ttf */; };
+		86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF7C9C1AF0FE180003F87D /* GitButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +34,16 @@
 		258575611AEFD6BA0007A288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258575621AEFD6BA0007A288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		258575651AEFD6BA0007A288 /* GitStatus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitStatus.xcdatamodel; sourceTree = "<group>"; };
-		258575671AEFD6BA0007A288 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		258575671AEFD6BA0007A288 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2585756A1AEFD6BA0007A288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2585756C1AEFD6BA0007A288 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2585756F1AEFD6BA0007A288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		258575751AEFD6BA0007A288 /* GitStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2585757A1AEFD6BA0007A288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2585757B1AEFD6BA0007A288 /* GitStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitStatusTests.swift; sourceTree = "<group>"; };
+		86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		86CF7C981AF0FCB50003F87D /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
+		86CF7C9C1AF0FE180003F87D /* GitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +86,13 @@
 			isa = PBXGroup;
 			children = (
 				258575621AEFD6BA0007A288 /* AppDelegate.swift */,
-				258575671AEFD6BA0007A288 /* ViewController.swift */,
+				258575671AEFD6BA0007A288 /* LoginViewController.swift */,
+				86CF7C9E1AF0FE1D0003F87D /* UIGitStatus */,
 				258575691AEFD6BA0007A288 /* Main.storyboard */,
 				2585756C1AEFD6BA0007A288 /* Images.xcassets */,
 				2585756E1AEFD6BA0007A288 /* LaunchScreen.xib */,
 				258575641AEFD6BA0007A288 /* GitStatus.xcdatamodeld */,
+				86CF7C9B1AF0FCC30003F87D /* Fonts */,
 				258575601AEFD6BA0007A288 /* Supporting Files */,
 			);
 			path = GitStatus;
@@ -113,6 +121,23 @@
 				2585757A1AEFD6BA0007A288 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		86CF7C9B1AF0FCC30003F87D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */,
+				86CF7C981AF0FCB50003F87D /* octicons.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		86CF7C9E1AF0FE1D0003F87D /* UIGitStatus */ = {
+			isa = PBXGroup;
+			children = (
+				86CF7C9C1AF0FE180003F87D /* GitButton.swift */,
+			);
+			name = UIGitStatus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +220,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CF7C9A1AF0FCB50003F87D /* octicons.ttf in Resources */,
 				2585756B1AEFD6BA0007A288 /* Main.storyboard in Resources */,
+				86CF7C991AF0FCB50003F87D /* fontawesome-webfont.ttf in Resources */,
 				258575701AEFD6BA0007A288 /* LaunchScreen.xib in Resources */,
 				2585756D1AEFD6BA0007A288 /* Images.xcassets in Resources */,
 			);
@@ -215,8 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				258575681AEFD6BA0007A288 /* ViewController.swift in Sources */,
+				258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */,
 				258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */,
+				86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */,
 				258575631AEFD6BA0007A288 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +443,7 @@
 				258575811AEFD6BA0007A288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		258575821AEFD6BA0007A288 /* Build configuration list for PBXNativeTarget "GitStatusTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +452,7 @@
 				258575841AEFD6BA0007A288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

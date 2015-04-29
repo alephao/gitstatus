@@ -1,25 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="octicons.ttf">
+            <string>octicons</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="GitStatus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gitstatus" translatesAutoresizingMaskIntoConstraints="NO" id="adM-nG-qrX">
+                                <rect key="frame" x="53" y="70" width="270" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="x7V-7W-93E"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hT-cY-fSl">
+                                <rect key="frame" x="239" y="140" width="84" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="xdj-wK-OjC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="octicons" family="octicons" pointSize="30"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wT-jl-TrH">
+                                <rect key="frame" x="209" y="148" width="24" height="23"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2h-Mc-XtF">
+                                <rect key="frame" x="16" y="314" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="K5Q-1m-RT2"/>
+                                </constraints>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Usuário" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0D-JK-89h">
+                                <rect key="frame" x="16" y="266" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RJe-e7-KUm"/>
+                                </constraints>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-EA-M0g" customClass="GitButton" customModule="GitStatus" customModuleProvider="target">
+                                <rect key="frame" x="16" y="362" width="343" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="GLJ-E2-yI3"/>
+                                </constraints>
+                                <state key="normal" title="Entrar">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-N3-yyq">
+                                <rect key="frame" x="109" y="617" width="157" height="30"/>
+                                <state key="normal" title="Política de Privacidade">
+                                    <color key="titleColor" red="0.25490196078431371" green="0.51372549019607838" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o0D-JK-89h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8Q1-Xb-eNJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o0D-JK-89h" secondAttribute="trailing" id="991-pY-IA2"/>
+                            <constraint firstItem="E2h-Mc-XtF" firstAttribute="top" secondItem="o0D-JK-89h" secondAttribute="bottom" constant="8" id="KYy-wn-oEL"/>
+                            <constraint firstItem="E2h-Mc-XtF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LzO-CA-Hyc"/>
+                            <constraint firstItem="bX5-EA-M0g" firstAttribute="top" secondItem="E2h-Mc-XtF" secondAttribute="bottom" constant="8" id="MZH-Aa-vEh"/>
+                            <constraint firstAttribute="centerX" secondItem="TK1-N3-yyq" secondAttribute="centerX" id="QIw-qX-TOE"/>
+                            <constraint firstItem="9hT-cY-fSl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="120" id="Qps-yR-KLN"/>
+                            <constraint firstItem="adM-nG-qrX" firstAttribute="trailing" secondItem="9hT-cY-fSl" secondAttribute="trailing" id="VMz-7q-AQq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E2h-Mc-XtF" secondAttribute="trailing" id="VOb-Tv-lXU"/>
+                            <constraint firstItem="adM-nG-qrX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="Xj0-95-YuO"/>
+                            <constraint firstItem="5wT-jl-TrH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="apW-uJ-eHC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bX5-EA-M0g" secondAttribute="trailing" id="eDW-Bh-Daq"/>
+                            <constraint firstAttribute="centerX" secondItem="adM-nG-qrX" secondAttribute="centerX" id="fsN-Om-pN2"/>
+                            <constraint firstItem="9hT-cY-fSl" firstAttribute="leading" secondItem="5wT-jl-TrH" secondAttribute="trailing" constant="6" id="lUv-oK-CmE"/>
+                            <constraint firstItem="bX5-EA-M0g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qZ1-Dt-tcV"/>
+                            <constraint firstAttribute="centerY" secondItem="E2h-Mc-XtF" secondAttribute="centerY" id="rg1-ip-9bh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TK1-N3-yyq" secondAttribute="bottom" constant="20" id="sSo-1p-57Q"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="gitstatus" width="333" height="85"/>
+    </resources>
 </document>
