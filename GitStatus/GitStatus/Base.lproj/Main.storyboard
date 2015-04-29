@@ -85,9 +85,19 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l89-SE-CSL">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ocorreu um erro, verifique seus dados e tente novamente" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-9Z-Cy1">
+                                <rect key="frame" x="16" y="484" width="343" height="40"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" red="0.86572265625" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8pP-9Z-Cy1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3gf-xm-yF4"/>
                             <constraint firstItem="o0D-JK-89h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8Q1-Xb-eNJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="o0D-JK-89h" secondAttribute="trailing" id="991-pY-IA2"/>
                             <constraint firstItem="E2h-Mc-XtF" firstAttribute="top" secondItem="o0D-JK-89h" secondAttribute="bottom" constant="8" id="KYy-wn-oEL"/>
@@ -98,29 +108,37 @@
                             <constraint firstItem="adM-nG-qrX" firstAttribute="trailing" secondItem="9hT-cY-fSl" secondAttribute="trailing" id="VMz-7q-AQq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="E2h-Mc-XtF" secondAttribute="trailing" id="VOb-Tv-lXU"/>
                             <constraint firstItem="adM-nG-qrX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="Xj0-95-YuO"/>
+                            <constraint firstAttribute="centerX" secondItem="l89-SE-CSL" secondAttribute="centerX" id="Y0p-Vf-Ssi"/>
                             <constraint firstItem="5wT-jl-TrH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="apW-uJ-eHC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bX5-EA-M0g" secondAttribute="trailing" id="eDW-Bh-Daq"/>
                             <constraint firstAttribute="centerX" secondItem="adM-nG-qrX" secondAttribute="centerX" id="fsN-Om-pN2"/>
+                            <constraint firstItem="8pP-9Z-Cy1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gXW-u1-T5a"/>
                             <constraint firstItem="9hT-cY-fSl" firstAttribute="leading" secondItem="5wT-jl-TrH" secondAttribute="trailing" constant="6" id="lUv-oK-CmE"/>
+                            <constraint firstItem="8pP-9Z-Cy1" firstAttribute="top" secondItem="bX5-EA-M0g" secondAttribute="bottom" constant="80" id="nLD-oy-n4W"/>
                             <constraint firstItem="bX5-EA-M0g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qZ1-Dt-tcV"/>
                             <constraint firstAttribute="centerY" secondItem="E2h-Mc-XtF" secondAttribute="centerY" id="rg1-ip-9bh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TK1-N3-yyq" secondAttribute="bottom" constant="20" id="sSo-1p-57Q"/>
+                            <constraint firstAttribute="centerY" secondItem="l89-SE-CSL" secondAttribute="centerY" id="xQW-gE-pXO"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="loginButton" destination="bX5-EA-M0g" id="nML-6M-pWI"/>
+                        <outlet property="messageLabel" destination="8pP-9Z-Cy1" id="JLr-fE-lDs"/>
                         <outlet property="passwordTextField" destination="E2h-Mc-XtF" id="6PO-oT-7K7"/>
+                        <outlet property="spinner" destination="l89-SE-CSL" id="bTs-1s-UAd"/>
                         <outlet property="usernameTextField" destination="o0D-JK-89h" id="PTt-Xa-39r"/>
+                        <segue destination="2ng-6C-dMx" kind="show" identifier="showMainView" id="KzK-xV-yW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1.5" y="682.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="1fU-In-q6Y">
             <objects>
-                <viewController id="2ng-6C-dMx" sceneMemberID="viewController">
+                <viewController id="2ng-6C-dMx" customClass="MainViewController" customModule="GitStatus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uep-fq-jc7"/>
                         <viewControllerLayoutGuide type="bottom" id="Qby-bX-jpH"/>

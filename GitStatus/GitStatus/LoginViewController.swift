@@ -13,16 +13,24 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var loginButton: GitButton!
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    @IBOutlet weak var messageLabel: UILabel!
+    
     var data: Data!
     var sendingRequest:Bool = false
-    var loadingLayer:CALayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         data = Data()
-    
-        loadingLayer = CALayer()
+        spinner.hidden = true
+        messageLabel.hidden = true
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("saveData"), name: "loadedDataFromWeb", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("failToLoad"), name: "failToLoadDataFromWeb", object: nil)
         
     }
 
@@ -36,10 +44,12 @@ class LoginViewController: UIViewController {
         if !sendingRequest {
             let userName = self.usernameTextField.text
             let pass = self.passwordTextField.text
+
             data.getRepo(userName, password: pass)
             
+            hideStuff()
+            
             sendingRequest = true
-            createLoadingLayer()
         }
     }
     
@@ -47,13 +57,30 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func createLoadingLayer() {
-        
-        loadingLayer.bounds = self.view.bounds
-        loadingLayer.backgroundColor = UIColor.yellowColor().CGColor
-        loadingLayer.position = self.view.center
-        self.view.layer.insertSublayer(loadingLayer, atIndex: 10)
-        
+    func hideStuff () {
+        usernameTextField.hidden = true
+        passwordTextField.hidden = true
+        loginButton.hidden = true
+        spinner.startAnimating()
+        spinner.hidden = false
+    }
+    
+    func showStuff() {
+        usernameTextField.hidden = false
+        passwordTextField.hidden = false
+        loginButton.hidden = false
+        spinner.stopAnimating()
+        spinner.hidden = true
+
+    }
+    
+    func saveData () {
+        println("Salvando dados")
+    }
+    
+    func failToLoad () {
+        messageLabel.hidden = false
+        showStuff()
     }
     
 }

@@ -98,6 +98,8 @@ class Data {
             x++
         }
         
+        NSNotificationCenter.defaultCenter().postNotificationName("loadedDataFromWeb", object: self)
+        
     }
     
     
@@ -151,10 +153,10 @@ class Data {
                         
                         let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
                     }
-                    else{
-                        println("FATAL ERROR")
-                    }
                 }//Request Async
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName("failToLoadDataFromWeb", object: self)
+                println("FATAL ERROR")
             }
         }
     } //Funcao termina aqui
