@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         data = Data()
         spinner.hidden = true
         messageLabel.hidden = true
@@ -36,11 +36,12 @@ class LoginViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
     @IBAction func tryLogin(sender: UIButton) {
+        self.view.endEditing(true)
+        
         if !sendingRequest {
             let userName = self.usernameTextField.text
             let pass = self.passwordTextField.text
@@ -71,15 +72,22 @@ class LoginViewController: UIViewController {
         loginButton.hidden = false
         spinner.stopAnimating()
         spinner.hidden = true
-
     }
     
     func saveData () {
         println("Salvando dados")
+        let url = NSURL(string: self.data.avatarUrl)
+        
+        User.sharedInstance.imageData = NSData(contentsOfURL: url!)
+        User.sharedInstance.name = self.usernameTextField.text
+        
+        self.performSegueWithIdentifier("showMainView", sender: self)
+        showStuff()
     }
     
     func failToLoad () {
         messageLabel.hidden = false
+        self.sendingRequest = false
         showStuff()
     }
     

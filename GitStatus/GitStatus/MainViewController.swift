@@ -8,17 +8,48 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func signOut(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        userAvatar.image = UIImage(data: User.sharedInstance.imageData!)
+        usernameLabel.text = User.sharedInstance.name
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:PullRequestTableViewCell? = self.tableView.dequeueReusableCellWithIdentifier("Cell") as? PullRequestTableViewCell
+
+        if cell != nil {
+            cell = PullRequestTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        }
+        
+//        cell?.title.text = "iDicionario"
+//        cell?.openedOn.text = "#17 opened on Mar 16 by"
+//        cell?.userName.text = User.sharedInstance.name
+//        cell?.repository.text = "mackmobile/test"
+//        cell?.comments.text = "\(5)"
+        
+        return UITableViewCell()
     }
     
 

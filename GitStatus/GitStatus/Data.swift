@@ -41,7 +41,7 @@ class Data {
                         
                         var string = dataArr[i]["user"]! as! NSDictionary
                         //USUARIO VAI AQUI!
-                        if(string["login"]!.isEqualToString("guifsouza")){
+                        if(string["login"]!.isEqualToString(username)){
                             
                             var stringLabelUrl = dataArr[i]["issue_url"]! as! String
                             
