@@ -14,6 +14,7 @@ class Data {
     var labelDictionary: [AnyObject] = []
     var reposName: [AnyObject] = []
     let requestAuth = RequestAuthorization()
+    var avatarUrl = ""
     
     func lookForUserPullUrl(username:String, password:String){
         
@@ -104,38 +105,57 @@ class Data {
     
     func getRepo(username:String, password:String){
         
-        var request = self.requestAuth.getRequest("https://api.github.com/users/mackmobile/repos", username: username,pw: password)
+        let usuario = username as String
+        var request = self.requestAuth.getRequest("https://api.github.com/users/\(usuario)", username: username, pw: password)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             var try = NSError?()
             if(response != nil){
                 let httpResponse = response as! NSHTTPURLResponse
                 println("Response: \(httpResponse.statusCode)")
                 
-                if httpResponse.statusCode == 200 {
-                    let dataArr = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &try) as! Array<NSDictionary>
-                    var i=0
-                    for repo in dataArr {
-                        
-                        var string = dataArr[i]["pulls_url"]! as! String
-                        var repos = dataArr[i]["name"]! as! String
-                        
-                        let range = advance(string.endIndex, -9)..<string.endIndex
-                        string.removeRange(range)
-                        string += "?per_page=100"
-                        self.dictionary.append(string)
-                        self.reposName.append(repos)
-                        i++
-                        
-                    }
-                    
-                }
-                self.lookForUserPullUrl(username, password: password)
                 
-                let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+                //PEGA O AVATAR
+                if httpResponse.statusCode == 200 {
+                    let dataArr = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &try) as! NSDictionary
+                    let avatar = dataArr["avatar_url"] as! String
+                    self.avatarUrl = avatar
+                }
+                println(self.avatarUrl)
+                
+                
+                var request = self.requestAuth.getRequest("https://api.github.com/users/mackmobile/repos", username: username,pw: password)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+                    var try = NSError?()
+                    if(response != nil){
+                        let httpResponse = response as! NSHTTPURLResponse
+                        
+                        if httpResponse.statusCode == 200 {
+                            let dataArr = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &try) as! Array<NSDictionary>
+                            var i=0
+                            for repo in dataArr {
+                                
+                                var string = dataArr[i]["pulls_url"]! as! String
+                                var repos = dataArr[i]["name"]! as! String
+                                
+                                let range = advance(string.endIndex, -9)..<string.endIndex
+                                string.removeRange(range)
+                                string += "?per_page=100"
+                                self.dictionary.append(string)
+                                self.reposName.append(repos)
+                                i++
+                                
+                            }
+                            
+                        }
+                        self.lookForUserPullUrl(username, password: password)
+                        
+                        let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+                    }
+                    else{
+                        println("FATAL ERROR")
+                    }
+                }//Request Async
             }
-            else{
-                println("FATAL ERROR")
-            }
-        }//Request Async
+        }
     } //Funcao termina aqui
 }
