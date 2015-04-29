@@ -17,6 +17,7 @@
 		86CF7C991AF0FCB50003F87D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */; };
 		86CF7C9A1AF0FCB50003F87D /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C981AF0FCB50003F87D /* octicons.ttf */; };
 		86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF7C9C1AF0FE180003F87D /* GitButton.swift */; };
+		86CF7CA01AF1023E0003F87D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF7C9F1AF1023E0003F87D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		86CF7C981AF0FCB50003F87D /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		86CF7C9C1AF0FE180003F87D /* GitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitButton.swift; sourceTree = "<group>"; };
+		86CF7C9F1AF1023E0003F87D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		2585755F1AEFD6BA0007A288 /* GitStatus */ = {
 			isa = PBXGroup;
 			children = (
+				86CF7C9F1AF1023E0003F87D /* Extensions.swift */,
 				258575621AEFD6BA0007A288 /* AppDelegate.swift */,
 				258575671AEFD6BA0007A288 /* LoginViewController.swift */,
 				86CF7C9E1AF0FE1D0003F87D /* UIGitStatus */,
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CF7CA01AF1023E0003F87D /* Extensions.swift in Sources */,
 				258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */,
 				258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */,
 				86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */,

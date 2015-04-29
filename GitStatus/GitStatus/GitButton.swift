@@ -17,16 +17,11 @@ class GitButton: UIButton {
     let colorBottom = UIColor(red: 96.0/255.0, green: 176.0/255.0, blue: 68.0/255.0, alpha: 1.0).CGColor
     
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        createLayersIfNeeded()
-    }
-    
-    private func createLayersIfNeeded() {
+    override func drawRect(rect: CGRect) {
         if bgLayer == nil {
             bgLayer = CAGradientLayer()
             
-            bgLayer.frame = self.frame
+            bgLayer.frame = self.bounds
             bgLayer.colors = [colorTop, colorBottom]
             bgLayer.locations = [0.0, 1.0]
             bgLayer.borderColor = UIColor(red: 92.0/255.0, green: 169.0/255.0, blue: 65.0/255.0, alpha: 1.0).CGColor
@@ -35,10 +30,6 @@ class GitButton: UIButton {
             
             self.layer.insertSublayer(bgLayer, atIndex: 0)
         }
-    }
-    
-    override func awakeFromNib() {
-        createLayersIfNeeded()
     }
 
 }
