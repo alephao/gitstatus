@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var data: Data = Data()
+        
+        data.getRepo()
     }
 
     override func didReceiveMemoryWarning() {
