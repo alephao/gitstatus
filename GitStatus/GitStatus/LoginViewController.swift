@@ -10,12 +10,20 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var data: Data!
+    var sendingRequest:Bool = false
+    var loadingLayer:CALayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var data: Data = Data()
+        data = Data()
+    
+        loadingLayer = CALayer()
         
-        data.getRepo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,5 +32,29 @@ class LoginViewController: UIViewController {
     }
 
 
+    @IBAction func tryLogin(sender: UIButton) {
+        if !sendingRequest {
+            let userName = self.usernameTextField.text
+            let pass = self.passwordTextField.text
+            data.getRepo(userName, password: pass)
+            
+            sendingRequest = true
+            createLoadingLayer()
+        }
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    func createLoadingLayer() {
+        
+        loadingLayer.bounds = self.view.bounds
+        loadingLayer.backgroundColor = UIColor.yellowColor().CGColor
+        loadingLayer.position = self.view.center
+        self.view.layer.insertSublayer(loadingLayer, atIndex: 10)
+        
+    }
+    
 }
 

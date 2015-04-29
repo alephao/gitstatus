@@ -15,7 +15,7 @@ class Data {
     var reposName: [AnyObject] = []
     let requestAuth = RequestAuthorization()
     
-    func lookForUserPullUrl(){
+    func lookForUserPullUrl(username:String, password:String){
         
         
         var x = 0
@@ -23,7 +23,7 @@ class Data {
             var string = self.dictionary[x] as! String
             // set up the base64-encoded credentials
             
-            var request = self.requestAuth.getRequest(string, username: "",pw: "")
+            var request = self.requestAuth.getRequest(string, username: username,pw: password)
             
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 
@@ -44,7 +44,7 @@ class Data {
                             
                             var stringLabelUrl = dataArr[i]["issue_url"]! as! String
                             
-                            var request = self.requestAuth.getRequest(stringLabelUrl, username: "",pw: "")
+                            var request = self.requestAuth.getRequest(stringLabelUrl, username: username, pw: password)
                             
                             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                                 
@@ -102,9 +102,9 @@ class Data {
     
     
     
-    func getRepo(){
+    func getRepo(username:String, password:String){
         
-        var request = self.requestAuth.getRequest("https://api.github.com/users/mackmobile/repos", username: "",pw: "")
+        var request = self.requestAuth.getRequest("https://api.github.com/users/mackmobile/repos", username: username,pw: password)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
             var try = NSError?()
             if(response != nil){
@@ -129,7 +129,7 @@ class Data {
                     }
                     
                 }
-                self.lookForUserPullUrl()
+                self.lookForUserPullUrl(username, password: password)
                 
                 let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
             }
