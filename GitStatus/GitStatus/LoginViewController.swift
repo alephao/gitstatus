@@ -22,8 +22,14 @@ class LoginViewController: UIViewController {
     var data: Data!
     var sendingRequest:Bool = false
     
+    var userDefauls = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let login:String = userDefauls.objectForKey("login") as? String {
+            self.usernameTextField.text = login
+        }
         
         data = Data()
         spinner.hidden = true
@@ -83,6 +89,8 @@ class LoginViewController: UIViewController {
         
         User.sharedInstance.imageData = NSData(contentsOfURL: url!)
         User.sharedInstance.name = self.usernameTextField.text
+        
+        self.userDefauls.setObject(self.usernameTextField.text, forKey: "login")
         
         self.performSegueWithIdentifier("showMainView", sender: self)
         self.sendingRequest = false
