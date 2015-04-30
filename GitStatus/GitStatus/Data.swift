@@ -16,6 +16,7 @@ class Data {
     let requestAuth = RequestAuthorization()
     var avatarUrl = ""
     var dic: [String:String] = [:]
+    var repoShared: [AnyObject] = []
     var qntComments: [AnyObject] = []
     
     func lookForUserPullUrl(username:String, password:String){
@@ -48,6 +49,19 @@ class Data {
                         
                         var stringLabelUrl = dataArr[i]["issue_url"]! as! String
                         
+                        var nomeRepoShared = stringLabelUrl as NSString
+                        
+                        for reposNome in self.reposName {
+                            var repoAux = reposNome as! String
+                            if(nomeRepoShared.containsString(repoAux)){
+                                nomeRepoShared = repoAux as String
+                                var dic = ["nomeRepo": nomeRepoShared, "issueURL": stringLabelUrl]
+                                self.repoShared.append(dic)
+                            }
+                        }
+                        
+                        
+                        
                         var request = self.requestAuth.getRequest(stringLabelUrl, username: username,pw: password)
                         var error = NSError?()
                         var response: NSURLResponse?
@@ -69,7 +83,7 @@ class Data {
                                     }
                                     
                                 }
-                                var dictionary = ["name": repo["name"] as! String, "color": repo["color"] as! String, "repo":repositorio]
+                                var dictionary = ["name": repo["name"] as! String, "color": repo["color"] as! String, "repo":repositorio, "issue": stringLabelUrl]
                                 labelDictionary.append(dictionary)
                             }
                             var teste = dataArr["comments"] as! NSNumber

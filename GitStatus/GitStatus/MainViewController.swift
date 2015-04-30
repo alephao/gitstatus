@@ -14,6 +14,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func signOut(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        //colocar um îfi pra se o usuario mete a fita do rimeimber do loguin
+        PullRequestManager.sharedInstance.resetPullRequests()
     }
     
     override func viewDidLoad() {

@@ -19,6 +19,11 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    var labelDictionary: [AnyObject] = []
+    var qntComments: [AnyObject] = []
+    
+    var labelCoreDataInstance = LabelManager.sharedInstance
+    
     var data: Data!
     var sendingRequest:Bool = false
     
@@ -85,6 +90,35 @@ class LoginViewController: UIViewController {
         let url = NSURL(string: self.data.avatarUrl)
         
         //SALVAR OS DADOS NO BANCO AQUI, ANTES DE DAR CLEARALL
+        self.labelDictionary = self.data.labelDictionary
+        self.qntComments = self.data.qntComments
+        println(self.data.repoShared)
+        
+        var nome =  ""
+        var color = ""
+        var repos = ""
+        var issue = ""
+        
+        for repo in self.data.repoShared{
+            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue)
+            repos = repo["nomeRepo"] as! String
+            issue = repo["issueURL"] as! String
+            
+            for label in self.labelDictionary {
+                
+                nome =  label["name"] as! String
+                color = label["color"] as! String
+                var repoName = label["repo"] as! String
+                
+                if nome == repoName{
+                   var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
+                    PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
+                }
+            }
+            
+        }
+        
+        
         self.data.clearAll()
         
         User.sharedInstance.imageData = NSData(contentsOfURL: url!)
