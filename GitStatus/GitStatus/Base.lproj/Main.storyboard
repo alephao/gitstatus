@@ -316,7 +316,6 @@
         <!--Detail View Controller-->
         <scene sceneID="PpS-xa-NDR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-dl-xnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="BzF-n1-Fbu" customClass="DetailViewController" customModule="GitStatus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G9c-Jl-bbJ"/>
@@ -392,6 +391,7 @@
                         <outlet property="labelsLabel" destination="GYT-zb-RwV" id="kaI-LX-Ffq"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-dl-xnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1608.5" y="682.5"/>
         </scene>

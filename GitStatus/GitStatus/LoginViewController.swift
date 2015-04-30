@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -33,19 +33,19 @@ class LoginViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("failToLoad"), name: "failToLoadDataFromWeb", object: nil)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
     @IBAction func tryLogin(sender: UIButton) {
         self.view.endEditing(true)
         
         if !sendingRequest {
             let userName = self.usernameTextField.text
             let pass = self.passwordTextField.text
-
+            
             data.getRepo(userName, password: pass)
             
             hideStuff()
@@ -77,6 +77,9 @@ class LoginViewController: UIViewController {
     func saveData () {
         println("Salvando dados")
         let url = NSURL(string: self.data.avatarUrl)
+        
+        //SALVAR OS DADOS NO BANCO AQUI, ANTES DE DAR CLEARALL
+        self.data.clearAll()
         
         User.sharedInstance.imageData = NSData(contentsOfURL: url!)
         User.sharedInstance.name = self.usernameTextField.text

@@ -15,6 +15,8 @@ class Data {
     var reposName: [AnyObject] = []
     let requestAuth = RequestAuthorization()
     var avatarUrl = ""
+    var dic: [String:String] = [:]
+    var qntComments: [AnyObject] = []
     
     func lookForUserPullUrl(username:String, password:String){
         
@@ -22,79 +24,72 @@ class Data {
         var x = 0
         for dics in self.dictionary{
             var string = self.dictionary[x] as! String
-            // set up the base64-encoded credentials
             
-            var request = self.requestAuth.getRequest(string, username: username,pw: password)
+            var request = self.requestAuth.getRequest(string, username: username,pw:password)
+            var error = NSError?()
+            var response: NSURLResponse?
+            let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
             
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+            
+            var try = NSError?()
+            
+            let httpResp = response as! NSHTTPURLResponse
+            
+            var i=0
+            if httpResp.statusCode == 200 {
+                let dataArr = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: &try) as! Array<NSDictionary>
                 
-                var try = NSError?()
                 
-                let httpResponse = response as! NSHTTPURLResponse
-                //                println("Response: \(httpResponse.statusCode)")
-                
-                if httpResponse.statusCode == 200 {
-                    let dataArr = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &try) as! Array<NSDictionary>
-                    var i=0
+                for repo in dataArr {
                     
-                    for repo in dataArr {
+                    var string = dataArr[i]["user"]! as! NSDictionary
+                    //USUARIO VAI AQUI!
+                    if(string["login"]!.isEqualToString(username)){
                         
-                        var string = dataArr[i]["user"]! as! NSDictionary
-                        //USUARIO VAI AQUI!
-                        if(string["login"]!.isEqualToString(username)){
+                        var stringLabelUrl = dataArr[i]["issue_url"]! as! String
+                        
+                        var request = self.requestAuth.getRequest(stringLabelUrl, username: username,pw: password)
+                        var error = NSError?()
+                        var response: NSURLResponse?
+                        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+                        let httpResp = response as! NSHTTPURLResponse
+                        if httpResp.statusCode == 200 {
+                            let dataArr = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &try) as! NSDictionary
                             
-                            var stringLabelUrl = dataArr[i]["issue_url"]! as! String
+                            var personLabels = dataArr["labels"] as! Array<NSDictionary>
                             
-                            var request = self.requestAuth.getRequest(stringLabelUrl, username: username, pw: password)
-                            
-                            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+                            var repositorio = dataArr["url"] as! NSString
+                            for repo in personLabels{
                                 
-                                var try = NSError?()
-                                //                                println(response)
-                                let httpResponse = response as! NSHTTPURLResponse
-                                
-                                
-                                if httpResponse.statusCode == 200 {
-                                    let dataArr = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &try) as! NSDictionary
-                                    
-                                    var personLabels = dataArr["labels"] as! Array<NSDictionary>
-                                    //                                    println(dataArr["url"]!)
-                                    //                                    println(personLabels)
-                                    
-                                    for repo in personLabels{
-                                        var repositorio = dataArr["url"] as! NSString
-                                        for reposNome in self.reposName {
-                                            var repoAux = reposNome as! String
-                                            if(repositorio.containsString(repoAux)){
-                                                repositorio = repoAux as String
-                                            }
-                                            
-                                        }
-                                        var dictionary = ["name": repo["name"] as! String, "color": repo["color"] as! String, "repo":repositorio]
-                                        self.labelDictionary.append(dictionary)
-                                        //                                                                                println(personLabels[count]["name"]!)
-                                        //                                                                                println(personLabels[count]["color"]!)
+                                for reposNome in self.reposName {
+                                    var repoAux = reposNome as! String
+                                    if(repositorio.containsString(repoAux)){
+                                        repositorio = repoAux as String
                                         
                                     }
-                                    println(self.labelDictionary)
                                     
                                 }
-                                
-                                let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+                                var dictionary = ["name": repo["name"] as! String, "color": repo["color"] as! String, "repo":repositorio]
+                                labelDictionary.append(dictionary)
                             }
+                            var teste = dataArr["comments"] as! NSNumber
+                            self.dic["quantidade"] = teste.stringValue
+                            self.dic["repo"] = repositorio as String
+                            self.qntComments.append(self.dic)
                             
                         }
                         
-                        i++
-                    }
+                    } ///////
                     
-                    
-                    
+                    i++
                 }
                 
-                let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+                
+                
             }
-            //
+            
+            let connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
+            
             x++
         }
         
@@ -160,4 +155,14 @@ class Data {
             }
         }
     } //Funcao termina aqui
+    
+    
+    func clearAll(){
+        self.labelDictionary.removeAll(keepCapacity: false)
+        self.dictionary.removeAll(keepCapacity: false)
+        self.labelsUrl.removeAll(keepCapacity: false)
+        self.qntComments.removeAll(keepCapacity: false)
+        self.reposName.removeAll(keepCapacity: false)
+        self.dic.removeAll(keepCapacity: false)
+    }
 }
