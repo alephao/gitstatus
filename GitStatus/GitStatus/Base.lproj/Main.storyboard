@@ -11,7 +11,6 @@
             <string>octicons</string>
             <string>octicons</string>
             <string>octicons</string>
-            <string>octicons</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -164,8 +163,8 @@
                                                         <constraint firstAttribute="height" constant="100" id="fNH-bE-pYY"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="alaphao" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc5-Mu-sfO">
-                                                    <rect key="frame" x="139" y="135" width="96" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alaphao" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc5-Mu-sfO">
+                                                    <rect key="frame" x="8" y="132" width="359" height="23"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -173,6 +172,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerX" secondItem="Rc5-Mu-sfO" secondAttribute="centerX" id="MTh-wj-cxd"/>
+                                                <constraint firstItem="Rc5-Mu-sfO" firstAttribute="leading" secondItem="X0f-Tt-5Dy" secondAttribute="leadingMargin" id="Wwl-R7-Aie"/>
+                                                <constraint firstItem="Rc5-Mu-sfO" firstAttribute="trailing" secondItem="X0f-Tt-5Dy" secondAttribute="trailingMargin" id="c7n-nP-q3q"/>
                                                 <constraint firstAttribute="centerX" secondItem="isW-bD-oha" secondAttribute="centerX" id="gdB-1H-iE4"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Rc5-Mu-sfO" secondAttribute="bottom" constant="16" id="hJt-S3-vxe"/>
                                                 <constraint firstItem="isW-bD-oha" firstAttribute="top" secondItem="X0f-Tt-5Dy" secondAttribute="topMargin" constant="19" id="vI5-nt-zE3"/>
@@ -290,7 +291,7 @@
                                 <rect key="frame" x="329" y="92" width="30" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="octicons" family="octicons" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="octicons" family="octicons" pointSize="25"/>
                                 <state key="normal" title="">
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -305,6 +306,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="RJa-9Q-J8c" id="zLP-Wr-leS"/>
+                        <segue destination="BzF-n1-Fbu" kind="show" identifier="showDetail" id="UM4-MI-E8S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcm-Ah-2Ss" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,6 +316,7 @@
         <!--Detail View Controller-->
         <scene sceneID="PpS-xa-NDR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-dl-xnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="BzF-n1-Fbu" customClass="DetailViewController" customModule="GitStatus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G9c-Jl-bbJ"/>
@@ -374,35 +377,6 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-a5-N9k" customClass="GitButton2" customModule="GitStatus" customModuleProvider="target">
-                                <rect key="frame" x="142" y="607" width="90" height="40"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" title="Voltar">
-                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmX-h9-QHf">
-                                <rect key="frame" x="329" y="20" width="30" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="octicons" family="octicons" pointSize="30"/>
-                                <state key="normal" title="">
-                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signOut:" destination="2ng-6C-dMx" eventType="touchUpInside" id="5f3-HY-dlY"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LzO-ZB-mT0">
-                                <rect key="frame" x="16" y="20" width="35" height="35"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="alaphao" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-92-MYz">
-                                <rect key="frame" x="59" y="25" width="72" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -412,12 +386,12 @@
                             <constraint firstItem="9Qk-Yk-Nly" firstAttribute="top" secondItem="GYT-zb-RwV" secondAttribute="bottom" constant="302" id="hzM-c5-zMs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sq2-f3-bOU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="labelsLabel" destination="GYT-zb-RwV" id="kaI-LX-Ffq"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4s2-dl-xnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1608.5" y="682.5"/>
         </scene>

@@ -83,9 +83,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        
 //        if section == 1 {
 //
-//            headerView.backgroundColor = UIColor.redColor()
+//            let topBorder = CALayer()
+//            topBorder.backgroundColor = UIColor(hex: "333333").CGColor
+//            topBorder.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 1)
+//            topBorder.position = CGPoint(x: self.view.bounds.width / 2, y: 0)
+//            
+//            let bottomBorder = CALayer()
+//            bottomBorder.backgroundColor = UIColor(hex: "333333").CGColor
+//            bottomBorder.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 1)
+//            bottomBorder.position = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height - 1)
+//            
+//            let theLabel = UILabel()
+//            theLabel.text = "4 pull requests em mackmobile"
+//            theLabel.font = UIFont(name: "Helvetica", size: 15)
+//            theLabel.textColor = UIColor(hex: "888888")
+//            theLabel.sizeToFit()
+//            
+//            headerView.backgroundColor = UIColor.whiteColor()
+//            headerView.layer.addSublayer(topBorder)
+//            headerView.layer.addSublayer(bottomBorder)
+//            headerView.addSubview(theLabel)
 //            
 //        }
+//        
+////        headerView.sizeToFit()
 //        
 //        return headerView
 //    }
@@ -102,6 +123,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        self.performSegueWithIdentifier("showDetail", sender: self)
         
     }
     
