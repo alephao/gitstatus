@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		258571B71AF2AEA50044F3F8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258571B31AF2AEA50044F3F8 /* Label.swift */; };
+		258571B81AF2AEA50044F3F8 /* LabelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258571B41AF2AEA50044F3F8 /* LabelManager.swift */; };
+		258571B91AF2AEA50044F3F8 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258571B51AF2AEA50044F3F8 /* PullRequest.swift */; };
+		258571BA1AF2AEA50044F3F8 /* PullRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258571B61AF2AEA50044F3F8 /* PullRequestManager.swift */; };
 		258575631AEFD6BA0007A288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258575621AEFD6BA0007A288 /* AppDelegate.swift */; };
 		258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 258575641AEFD6BA0007A288 /* GitStatus.xcdatamodeld */; };
 		258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258575671AEFD6BA0007A288 /* LoginViewController.swift */; };
@@ -40,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		258571B31AF2AEA50044F3F8 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		258571B41AF2AEA50044F3F8 /* LabelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelManager.swift; sourceTree = "<group>"; };
+		258571B51AF2AEA50044F3F8 /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
+		258571B61AF2AEA50044F3F8 /* PullRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestManager.swift; sourceTree = "<group>"; };
 		2585755D1AEFD6BA0007A288 /* GitStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		258575611AEFD6BA0007A288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258575621AEFD6BA0007A288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +92,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		258571BB1AF2AFD50044F3F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				258571B31AF2AEA50044F3F8 /* Label.swift */,
+				258571B51AF2AEA50044F3F8 /* PullRequest.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		258571BC1AF2AFE40044F3F8 /* CoreData Managers */ = {
+			isa = PBXGroup;
+			children = (
+				258571B41AF2AEA50044F3F8 /* LabelManager.swift */,
+				258571B61AF2AEA50044F3F8 /* PullRequestManager.swift */,
+			);
+			name = "CoreData Managers";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		258575541AEFD6BA0007A288 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +133,8 @@
 		2585755F1AEFD6BA0007A288 /* GitStatus */ = {
 			isa = PBXGroup;
 			children = (
+				258571BC1AF2AFE40044F3F8 /* CoreData Managers */,
+				258571BB1AF2AFD50044F3F8 /* Models */,
 				86CF7C9F1AF1023E0003F87D /* Extensions.swift */,
 				258575621AEFD6BA0007A288 /* AppDelegate.swift */,
 				864A84F11AF2412C00DCE5D0 /* Controllers */,
@@ -290,18 +320,22 @@
 			files = (
 				864A84F01AF2411B00DCE5D0 /* DetailViewController.swift in Sources */,
 				862CEB071AF26A4B00E2EA6B /* ProfileTableViewCell.swift in Sources */,
+				258571BA1AF2AEA50044F3F8 /* PullRequestManager.swift in Sources */,
 				86CF7CA01AF1023E0003F87D /* Extensions.swift in Sources */,
 				864A84FB1AF254EC00DCE5D0 /* GitNavigationController.swift in Sources */,
 				EC7185B41AF113950002E1F9 /* Data.swift in Sources */,
 				258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */,
 				258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */,
 				86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */,
+				258571B81AF2AEA50044F3F8 /* LabelManager.swift in Sources */,
+				258571B71AF2AEA50044F3F8 /* Label.swift in Sources */,
 				86CF7CA41AF122CE0003F87D /* User.swift in Sources */,
 				86CF7CA61AF127BE0003F87D /* PullRequestTableViewCell.swift in Sources */,
 				258575631AEFD6BA0007A288 /* AppDelegate.swift in Sources */,
 				864A84F51AF2501700DCE5D0 /* GitButton2.swift in Sources */,
 				EC7185B51AF113950002E1F9 /* RequestAuthorization.swift in Sources */,
 				86CF7CA21AF121A30003F87D /* MainViewController.swift in Sources */,
+				258571B91AF2AEA50044F3F8 /* PullRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,7 @@ public class PullRequestManager {
         
     }
     
-    func deleteLabel(pullReqToBeDeleted: PullRequest) {
+    func deletePullRequest(pullReqToBeDeleted: PullRequest) {
         
         managedContext.deleteObject(pullReqToBeDeleted)
         managedContext.save(nil)
@@ -55,5 +55,19 @@ public class PullRequestManager {
     
     func removeLabelFromPullRequest(pullReq: PullRequest, label: Label) {
         pullReq.removeLabel(managedContext, labelToBeRemoved: label)
+    }
+    
+    func resetPullRequests() {
+        let fetchRequest = NSFetchRequest(entityName: PullRequestManager.entityName)
+        var erro = NSErrorPointer()
+        let fetchedResults: NSArray = managedContext.executeFetchRequest(fetchRequest, error: erro)!
+        
+        if fetchedResults.count > 0 {
+            let listaResultados = fetchedResults
+            for pullReqItem in listaResultados {
+                deletePullRequest(pullReqItem as! PullRequest)
+            }
+        }
+        
     }
 }
