@@ -14,6 +14,9 @@
 		2585756D1AEFD6BA0007A288 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2585756C1AEFD6BA0007A288 /* Images.xcassets */; };
 		258575701AEFD6BA0007A288 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2585756E1AEFD6BA0007A288 /* LaunchScreen.xib */; };
 		2585757C1AEFD6BA0007A288 /* GitStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2585757B1AEFD6BA0007A288 /* GitStatusTests.swift */; };
+		864A84F01AF2411B00DCE5D0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864A84EF1AF2411B00DCE5D0 /* DetailViewController.swift */; };
+		864A84F51AF2501700DCE5D0 /* GitButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864A84F41AF2501700DCE5D0 /* GitButton2.swift */; };
+		864A84FB1AF254EC00DCE5D0 /* GitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864A84FA1AF254EC00DCE5D0 /* GitNavigationController.swift */; };
 		86CF7C991AF0FCB50003F87D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */; };
 		86CF7C9A1AF0FCB50003F87D /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86CF7C981AF0FCB50003F87D /* octicons.ttf */; };
 		86CF7C9D1AF0FE180003F87D /* GitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF7C9C1AF0FE180003F87D /* GitButton.swift */; };
@@ -47,6 +50,9 @@
 		258575751AEFD6BA0007A288 /* GitStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2585757A1AEFD6BA0007A288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2585757B1AEFD6BA0007A288 /* GitStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitStatusTests.swift; sourceTree = "<group>"; };
+		864A84EF1AF2411B00DCE5D0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		864A84F41AF2501700DCE5D0 /* GitButton2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitButton2.swift; sourceTree = "<group>"; };
+		864A84FA1AF254EC00DCE5D0 /* GitNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitNavigationController.swift; sourceTree = "<group>"; };
 		86CF7C971AF0FCB50003F87D /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		86CF7C981AF0FCB50003F87D /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		86CF7C9C1AF0FE180003F87D /* GitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitButton.swift; sourceTree = "<group>"; };
@@ -99,12 +105,11 @@
 			children = (
 				86CF7C9F1AF1023E0003F87D /* Extensions.swift */,
 				258575621AEFD6BA0007A288 /* AppDelegate.swift */,
-				258575671AEFD6BA0007A288 /* LoginViewController.swift */,
+				864A84F11AF2412C00DCE5D0 /* Controllers */,
 				EC7185B21AF113950002E1F9 /* Data.swift */,
 				EC7185B31AF113950002E1F9 /* RequestAuthorization.swift */,
-				86CF7CA11AF121A30003F87D /* MainViewController.swift */,
 				86CF7CA31AF122CE0003F87D /* User.swift */,
-				86CF7CA51AF127BE0003F87D /* PullRequestTableViewCell.swift */,
+				864A84FC1AF2605E00DCE5D0 /* Cells */,
 				258575691AEFD6BA0007A288 /* Main.storyboard */,
 				86CF7C9E1AF0FE1D0003F87D /* UIGitStatus */,
 				2585756C1AEFD6BA0007A288 /* Images.xcassets */,
@@ -141,6 +146,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		864A84F11AF2412C00DCE5D0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				258575671AEFD6BA0007A288 /* LoginViewController.swift */,
+				86CF7CA11AF121A30003F87D /* MainViewController.swift */,
+				864A84EF1AF2411B00DCE5D0 /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		864A84FC1AF2605E00DCE5D0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				86CF7CA51AF127BE0003F87D /* PullRequestTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		86CF7C9B1AF0FCC30003F87D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +176,9 @@
 		86CF7C9E1AF0FE1D0003F87D /* UIGitStatus */ = {
 			isa = PBXGroup;
 			children = (
+				864A84FA1AF254EC00DCE5D0 /* GitNavigationController.swift */,
 				86CF7C9C1AF0FE180003F87D /* GitButton.swift */,
+				864A84F41AF2501700DCE5D0 /* GitButton2.swift */,
 			);
 			name = UIGitStatus;
 			sourceTree = "<group>";
@@ -260,7 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				864A84F01AF2411B00DCE5D0 /* DetailViewController.swift in Sources */,
 				86CF7CA01AF1023E0003F87D /* Extensions.swift in Sources */,
+				864A84FB1AF254EC00DCE5D0 /* GitNavigationController.swift in Sources */,
 				EC7185B41AF113950002E1F9 /* Data.swift in Sources */,
 				258575681AEFD6BA0007A288 /* LoginViewController.swift in Sources */,
 				258575661AEFD6BA0007A288 /* GitStatus.xcdatamodeld in Sources */,
@@ -268,6 +295,7 @@
 				86CF7CA41AF122CE0003F87D /* User.swift in Sources */,
 				86CF7CA61AF127BE0003F87D /* PullRequestTableViewCell.swift in Sources */,
 				258575631AEFD6BA0007A288 /* AppDelegate.swift in Sources */,
+				864A84F51AF2501700DCE5D0 /* GitButton2.swift in Sources */,
 				EC7185B51AF113950002E1F9 /* RequestAuthorization.swift in Sources */,
 				86CF7CA21AF121A30003F87D /* MainViewController.swift in Sources */,
 			);
