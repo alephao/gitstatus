@@ -28,14 +28,9 @@ public class PullRequestManager {
         let pullReqEntityDescription = NSEntityDescription.entityForName(PullRequestManager.entityName, inManagedObjectContext: managedContext)
         var newPullReq = PullRequest(entity: pullReqEntityDescription!, insertIntoManagedObjectContext: managedContext)
 
-//        let newPullReq = NSEntityDescription.insertNewObjectForEntityForName("PullRequest", inManagedObjectContext: managedContext) as! PullRequest
         newPullReq.lastUpdate = NSDate()
         newPullReq.titulo = titulo
         newPullReq.issueUrl = issueUrl
-        
-//        for lblItem in pullReq.label {
-//            newPullReq.addLabel(managedContext, labelToBeAdded: lblItem as! Label)
-//        }
         
         managedContext.save(nil)
         
@@ -43,7 +38,7 @@ public class PullRequestManager {
         
     }
     
-    func deleteLabel(pullReqToBeDeleted: PullRequest) {
+    func deletePullRequest(pullReqToBeDeleted: PullRequest) {
         
         managedContext.deleteObject(pullReqToBeDeleted)
         managedContext.save(nil)
@@ -55,5 +50,19 @@ public class PullRequestManager {
     
     func removeLabelFromPullRequest(pullReq: PullRequest, label: Label) {
         pullReq.removeLabel(managedContext, labelToBeRemoved: label)
+    }
+    
+    func resetPullRequests() {
+        let fetchRequest = NSFetchRequest(entityName: PullRequestManager.entityName)
+        var erro = NSErrorPointer()
+        let fetchedResults: NSArray = managedContext.executeFetchRequest(fetchRequest, error: erro)!
+        
+        if fetchedResults.count > 0 {
+            let listaResultados = fetchedResults
+            for pullReqItem in listaResultados {
+                deletePullRequest(pullReqItem as! PullRequest)
+            }
+        }
+        
     }
 }

@@ -61,6 +61,20 @@ public class LabelManager {
         managedContext.save(nil)
     }
     
+    func resetLabels() {
+        let fetchRequest = NSFetchRequest(entityName: LabelManager.entityName)
+        var erro = NSErrorPointer()
+        let fetchedResults: NSArray = managedContext.executeFetchRequest(fetchRequest, error: erro)!
+        
+        if fetchedResults.count > 0 {
+            let listaResultados = fetchedResults
+            for lblItem in listaResultados {
+                deleteLabel(lblItem as! Label)
+            }
+        }
+        
+    }
+    
     
    
 }

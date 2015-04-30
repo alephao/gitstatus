@@ -26,16 +26,16 @@ class PullRequest: NSManagedObject {
     func removeLabel(moc: NSManagedObjectContext, labelToBeRemoved: Label) {
         var labels = self.mutableSetValueForKey("label")
         
-        var labelInstanceToRemove = Label()
+        //var labelInstanceToRemove = Label()
         for lblItem in labels {
             var currentLabel = lblItem as! Label
             if currentLabel.nome == labelToBeRemoved.nome && currentLabel.cor == currentLabel.cor {
-                labelInstanceToRemove = currentLabel
+                labels.removeObject(currentLabel)
                 break
             }
         }
         
-        labels.removeObject(labelInstanceToRemove)
+        //labels.removeObject(labelInstanceToRemove)
         
         moc.save(nil)
         

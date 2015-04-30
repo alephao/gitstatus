@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         data = Data()
         spinner.hidden = true
         messageLabel.hidden = true
