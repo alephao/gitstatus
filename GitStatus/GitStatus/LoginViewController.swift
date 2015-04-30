@@ -82,7 +82,9 @@ class LoginViewController: UIViewController {
         User.sharedInstance.name = self.usernameTextField.text
         
         self.performSegueWithIdentifier("showMainView", sender: self)
+        self.sendingRequest = false
         showStuff()
+        passwordTextField.text = ""
     }
     
     func failToLoad () {
