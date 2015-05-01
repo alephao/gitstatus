@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
         //SALVAR OS DADOS NO BANCO AQUI, ANTES DE DAR CLEARALL
         self.labelDictionary = self.data.labelDictionary
         self.qntComments = self.data.qntComments
-        println(self.data.repoShared)
+//        println(self.data.repoShared)
         
         var nome =  ""
         var color = ""

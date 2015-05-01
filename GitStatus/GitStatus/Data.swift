@@ -131,7 +131,7 @@ class Data {
                     let avatar = dataArr["avatar_url"] as! String
                     self.avatarUrl = avatar
                 }
-                println(self.avatarUrl)
+//                println(self.avatarUrl)
                 
                 
                 var request = self.requestAuth.getRequest("https://api.github.com/users/mackmobile/repos", username: username,pw: password)
