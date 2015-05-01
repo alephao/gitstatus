@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //    var condic = true
+    var idAnterior: String = ""
     var firstTime = true
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //        while(self.condic){
-        sleep(50)
+        sleep(2)
         
         var request = requestAuth.getRequest("https://api.github.com/notifications", username: "gutti95", pw: "gustgt12")
         
@@ -56,26 +56,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if httpResponse.statusCode == 200 {
             let dataArr = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &try) as! Array<NSDictionary>
-            //                var idAnterior: String = id as! String
+            
+            id = dataArr[0]["updated_at"] as! NSString
+            
+            if(!self.firstTime){
+                self.idAnterior = id as! String
+            }
             
             let repo = dataArr[0]["repository"] as! NSDictionary
             let subject = dataArr[0]["subject"] as! NSDictionary
             
-            firstTime = false
+            self.firstTime = false
             
             repositorio = repo["name"] as! String
             title = subject["title"] as! String
             
-            
-            var localNotification = UILocalNotification()
-            localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
-            localNotification.alertBody = "Você tem notificações em \(repositorio), com o assunto \(title)"
-            localNotification.timeZone = NSTimeZone.defaultTimeZone()
-            localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-            
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-            
-            
+            if(!id.isEqualToString(self.idAnterior)){
+                var localNotification = UILocalNotification()
+                localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+                localNotification.alertBody = "Você tem notificações em \(repositorio), com o assunto \(title)"
+                localNotification.timeZone = NSTimeZone.defaultTimeZone()
+                localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                
+            }
         }
         //
         //        }
