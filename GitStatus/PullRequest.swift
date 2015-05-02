@@ -34,9 +34,10 @@ class PullRequest: NSManagedObject {
                 break
             }
         }
-        moc.save(nil)
         
+        moc.save(nil)
     }
+
 }
 
 

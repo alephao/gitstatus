@@ -14,5 +14,6 @@ class Label: NSManagedObject {
 
     @NSManaged var cor: String
     @NSManaged var nome: String
+    @NSManaged var pull_request: PullRequest //NSManagedObject
 
 }

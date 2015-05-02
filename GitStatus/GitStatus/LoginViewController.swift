@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -19,11 +19,22 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    var labelDictionary: [AnyObject] = []
+    var qntComments: [AnyObject] = []
+    
+    var labelCoreDataInstance = LabelManager.sharedInstance
+    
     var data: Data!
     var sendingRequest:Bool = false
     
+    var userDefauls = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let login:String = userDefauls.objectForKey("login") as? String {
+            self.usernameTextField.text = login
+        }
         
         data = Data()
         spinner.hidden = true
@@ -33,19 +44,19 @@ class LoginViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("failToLoad"), name: "failToLoadDataFromWeb", object: nil)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
     @IBAction func tryLogin(sender: UIButton) {
         self.view.endEditing(true)
         
         if !sendingRequest {
             let userName = self.usernameTextField.text
             let pass = self.passwordTextField.text
-
+            
             data.getRepo(userName, password: pass)
             
             hideStuff()
@@ -78,8 +89,45 @@ class LoginViewController: UIViewController {
         println("Salvando dados")
         let url = NSURL(string: self.data.avatarUrl)
         
+        //SALVAR OS DADOS NO BANCO AQUI, ANTES DE DAR CLEARALL
+        self.labelDictionary = self.data.labelDictionary
+        self.qntComments = self.data.qntComments
+//        println(self.data.repoShared)
+        
+        var nome =  ""
+        var color = ""
+        var repos = ""
+        var issue = ""
+        
+        for repo in self.data.repoShared{
+            
+            repos = repo["nomeRepo"] as! String
+            issue = repo["issueURL"] as! String
+            
+            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue)
+            
+            
+            for label in self.labelDictionary {
+                
+                nome =  label["name"] as! String
+                color = label["color"] as! String
+                var repoName = label["repo"] as! String
+                
+                if repoName == repos{
+                   var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
+                    PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
+                }
+            }
+            
+        }
+        
+        
+        self.data.clearAll()
+        
         User.sharedInstance.imageData = NSData(contentsOfURL: url!)
         User.sharedInstance.name = self.usernameTextField.text
+        
+        self.userDefauls.setObject(self.usernameTextField.text, forKey: "login")
         
         self.performSegueWithIdentifier("showMainView", sender: self)
         self.sendingRequest = false
