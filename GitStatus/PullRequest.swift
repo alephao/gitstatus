@@ -15,6 +15,7 @@ class PullRequest: NSManagedObject {
     @NSManaged var titulo: String
     @NSManaged var lastUpdate: NSDate
     @NSManaged var issueUrl: String
+    @NSManaged var numeroComentarios: NSNumber
     @NSManaged var label: NSSet
     
     func addLabel(moc: NSManagedObjectContext, labelToBeAdded: Label) {

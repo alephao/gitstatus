@@ -22,7 +22,7 @@ public class PullRequestManager {
     
     private init() {}
     
-    func createPullRequest(titulo: String, issueUrl: String) -> PullRequest {
+    func createPullRequest(titulo: String, issueUrl: String, numeroComentarios: NSNumber) -> PullRequest {
         
         
         let pullReqEntityDescription = NSEntityDescription.entityForName(PullRequestManager.entityName, inManagedObjectContext: managedContext)
@@ -32,6 +32,7 @@ public class PullRequestManager {
         newPullReq.lastUpdate = NSDate()
         newPullReq.titulo = titulo
         newPullReq.issueUrl = issueUrl
+        newPullReq.numeroComentarios = numeroComentarios
         
 //        for lblItem in pullReq.label {
 //            newPullReq.addLabel(managedContext, labelToBeAdded: lblItem as! Label)
