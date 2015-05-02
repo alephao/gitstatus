@@ -102,7 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell?.title.text = currentPullRequest.titulo
             cell?.openedOn.text = "#17 opened on Mar 16 by"
             cell?.userName.text = User.sharedInstance.name
-            cell?.repository.text = "mackmobile/test"
+            cell?.repository.text = "mackmobile/\(currentPullRequest.titulo)"
             cell?.comments.text = "\(5)"
         }
         

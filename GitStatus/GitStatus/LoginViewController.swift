@@ -100,9 +100,12 @@ class LoginViewController: UIViewController {
         var issue = ""
         
         for repo in self.data.repoShared{
-            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue)
+            
             repos = repo["nomeRepo"] as! String
             issue = repo["issueURL"] as! String
+            
+            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue)
+            
             
             for label in self.labelDictionary {
                 
@@ -110,7 +113,7 @@ class LoginViewController: UIViewController {
                 color = label["color"] as! String
                 var repoName = label["repo"] as! String
                 
-                if nome == repoName{
+                if repoName == repos{
                    var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
                     PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
                 }
