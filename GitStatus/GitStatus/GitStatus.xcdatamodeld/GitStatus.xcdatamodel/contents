@@ -13,7 +13,7 @@
         <relationship name="label" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Label" inverseName="pull_request" inverseEntity="Label" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Label" positionX="-54" positionY="18" width="128" height="75"/>
-        <element name="PullRequest" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Label" positionX="-29" positionY="-25" width="128" height="88"/>
+        <element name="PullRequest" positionX="-261" positionY="-45" width="128" height="120"/>
     </elements>
 </model>
