@@ -3,15 +3,16 @@
     <entity name="Label" representedClassName="Label" syncable="YES">
         <attribute name="cor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pull_request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="label" inverseEntity="PullRequest" syncable="YES"/>
     </entity>
     <entity name="PullRequest" representedClassName="PullRequest" syncable="YES">
         <attribute name="issueUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="label" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Label" syncable="YES"/>
+        <relationship name="label" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Label" inverseName="pull_request" inverseEntity="Label" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PullRequest" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Label" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="Label" positionX="-29" positionY="-25" width="128" height="88"/>
+        <element name="PullRequest" positionX="-261" positionY="-45" width="128" height="103"/>
     </elements>
 </model>

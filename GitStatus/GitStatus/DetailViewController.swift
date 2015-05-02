@@ -12,7 +12,8 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var labelsLabel: UILabel!
     
-    var labels:[[String:String]]!
+    var labels:[Label]!
+    var thePullRequest:PullRequest!
     var lastLabel:UILabel!
     
     
@@ -31,16 +32,24 @@ class DetailViewController: UIViewController {
         var pos_y:CGFloat = 0
         
         
-        labels = [["color": "f99608", "name": "Bronze 1"], ["color": "f99608", "name": "Bronze 2"], ["color": "f0f908", "name": "Ouro 1"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"]]
+        
+//        PullRequest.sharedInstance.titulo = selectedPR.titulo
+//        PullRequest.sharedInstance.lastUpdate = selectedPR.lastUpdate
+//        PullRequest.sharedInstance.issueUrl = selectedPR.issueUrl
+        labels = thePullRequest.label.allObjects as! [Label]
         
         
+//        labels = [["color": "f99608", "name": "Bronze 1"], ["color": "f99608", "name": "Bronze 2"], ["color": "f0f908", "name": "Ouro 1"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"]]
+        
+//        println(thePullRequest)
+//        println(labels)
         self.lastLabel = labelsLabel
         
         for label in labels {
             let theLabel = UILabel()
             theLabel.font = UIFont(name: "Helvetica-Bold", size: 15)
-            theLabel.text = label["name"]!
-            theLabel.backgroundColor = UIColor(hex: label["color"]!)
+            theLabel.text = label.nome
+            theLabel.backgroundColor = UIColor(hex: label.cor)
             theLabel.textAlignment = .Center
             theLabel.textColor = UIColor.whiteColor()
             theLabel.sizeToFit()
