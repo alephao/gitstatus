@@ -92,19 +92,34 @@ class LoginViewController: UIViewController {
         //SALVAR OS DADOS NO BANCO AQUI, ANTES DE DAR CLEARALL
         self.labelDictionary = self.data.labelDictionary
         self.qntComments = self.data.qntComments
-//        println(self.data.repoShared)
+        //        println(self.data.repoShared)
         
         var nome =  ""
         var color = ""
         var repos = ""
         var issue = ""
+        var i = 0
+        var qntComentarios:NSNumber = 0
         
         for repo in self.data.repoShared{
             
             repos = repo["nomeRepo"] as! String
             issue = repo["issueURL"] as! String
             
-            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue)
+            var repoQntComent = self.data.qntComments[i]["repo"] as! String
+            
+            if(repoQntComent == repos){
+                let formatter = NSNumberFormatter()
+                formatter.numberStyle = NSNumberFormatterStyle.NoStyle;
+                var x = self.data.qntComments[i]["quantidade"] as! String
+                if let number = formatter.numberFromString(x) {
+                    qntComentarios = number
+                }
+            }
+            
+            i++
+            
+            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue, numeroComentarios: qntComentarios)
             
             
             for label in self.labelDictionary {
@@ -114,7 +129,7 @@ class LoginViewController: UIViewController {
                 var repoName = label["repo"] as! String
                 
                 if repoName == repos{
-                   var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
+                    var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
                     PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
                 }
             }

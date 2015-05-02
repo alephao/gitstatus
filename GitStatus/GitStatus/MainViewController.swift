@@ -47,16 +47,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         
-//        if User.sharedInstance.name != nil {
-//            userAvatar.image = UIImage(data: User.sharedInstance.imageData!)
-//            usernameLabel.text = User.sharedInstance.name
-//        }
+        //        if User.sharedInstance.name != nil {
+        //            userAvatar.image = UIImage(data: User.sharedInstance.imageData!)
+        //            usernameLabel.text = User.sharedInstance.name
+        //        }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -85,25 +85,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         var cell:PullRequestTableViewCell? = self.tableView.dequeueReusableCellWithIdentifier("Cell") as? PullRequestTableViewCell
-   
-            if cell == nil {
-  
-                cell = PullRequestTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-   
-            }
+        
+        if cell == nil {
+            
+            cell = PullRequestTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+            
+        }
         
         
         if indexPath.section == 1 {
-            println(indexPath.row)
+//            println(indexPath.row)
             let currentPullRequest = pullRequests[indexPath.row] as! PullRequest
-            println(currentPullRequest.titulo)
-//            println(currentPullRequest)
+//            println(currentPullRequest.titulo)
+            //            println(currentPullRequest)
             
             cell?.title.text = currentPullRequest.titulo
             cell?.openedOn.text = "#17 opened on Mar 16 by"
             cell?.userName.text = User.sharedInstance.name
             cell?.repository.text = "mackmobile/\(currentPullRequest.titulo)"
-            cell?.comments.text = "\(5)"
+            cell?.comments.text = "\(currentPullRequest.numeroComentarios)"
         }
         
         return indexPath.section == 1 ? cell! : cellProfile!
@@ -131,9 +131,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destination = segue.destinationViewController as! DetailViewController
@@ -142,5 +142,5 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         println("labels: \(teste.label)")
         destination.thePullRequest = pullRequests[self.selectedRow] as! PullRequest
     }
-
+    
 }

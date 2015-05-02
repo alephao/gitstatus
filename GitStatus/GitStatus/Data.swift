@@ -90,7 +90,7 @@ class Data {
                             self.dic["quantidade"] = teste.stringValue
                             self.dic["repo"] = repositorio as String
                             self.qntComments.append(self.dic)
-                            
+//                            println(self.qntComments)
                         }
                         
                     } ///////
