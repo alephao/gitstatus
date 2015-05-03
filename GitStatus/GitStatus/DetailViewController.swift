@@ -16,10 +16,32 @@ class DetailViewController: UIViewController {
     var thePullRequest:PullRequest!
     var lastLabel:UILabel!
     
+    @IBOutlet weak var repoTitle: UILabel!
+    @IBOutlet weak var repoRepo: UILabel!
+    @IBOutlet weak var repoUser: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+//        PullRequest.sharedInstance.titulo = selectedPR.titulo
+//        PullRequest.sharedInstance.lastUpdate = selectedPR.lastUpdate
+//        PullRequest.sharedInstance.issueUrl = selectedPR.issueUrl
+        
+        
+//        labels = [["color": "f99608", "name": "Bronze 1"], ["color": "f99608", "name": "Bronze 2"], ["color": "f0f908", "name": "Ouro 1"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"]]
+        
+//        println(thePullRequest)
+//        println(labels)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.repoTitle.text = thePullRequest.titulo
+        self.repoRepo.text = "mackmobile/\(thePullRequest.titulo)"
+        self.repoUser.text = User.sharedInstance.name
+        labels = thePullRequest.label.allObjects as! [Label]
+        
         var margin:CGFloat = 8.0
         var viewMargins:CGFloat = 32.0
         var viewWidthMinusMargin = self.view.bounds.width - viewMargins
@@ -31,18 +53,6 @@ class DetailViewController: UIViewController {
         var pos_x:CGFloat = 0
         var pos_y:CGFloat = 0
         
-        
-        
-//        PullRequest.sharedInstance.titulo = selectedPR.titulo
-//        PullRequest.sharedInstance.lastUpdate = selectedPR.lastUpdate
-//        PullRequest.sharedInstance.issueUrl = selectedPR.issueUrl
-        labels = thePullRequest.label.allObjects as! [Label]
-        
-        
-//        labels = [["color": "f99608", "name": "Bronze 1"], ["color": "f99608", "name": "Bronze 2"], ["color": "f0f908", "name": "Ouro 1"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"], ["color": "333333", "name": "Teste"]]
-        
-//        println(thePullRequest)
-//        println(labels)
         self.lastLabel = labelsLabel
         
         for label in labels {
@@ -77,7 +87,7 @@ class DetailViewController: UIViewController {
             
             self.lastLabel = theLabel
         }
-        
+
     }
 
     override func didReceiveMemoryWarning() {

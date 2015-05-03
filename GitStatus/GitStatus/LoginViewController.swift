@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     
@@ -27,7 +28,11 @@ class LoginViewController: UIViewController {
     var data: Data!
     var sendingRequest:Bool = false
     
+    var error:NSError?
+    
     var userDefauls = NSUserDefaults.standardUserDefaults()
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +136,16 @@ class LoginViewController: UIViewController {
                 if repoName == repos{
                     var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
                     PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
+                } else {
+                    let newLabel = NSEntityDescription.insertNewObjectForEntityForName("Label", inManagedObjectContext: self.managedObjectContext!) as! Label
+                    
+                    newLabel.cor = color
+                    newLabel.nome = nome
+                    
+                    self.managedObjectContext?.save(&error)
+                    
+                    PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: newLabel)
+                    
                 }
             }
             
