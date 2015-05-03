@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var switchDisplay: UISwitch!
     @IBOutlet weak var messageLabel: UILabel!
     
     var labelDictionary: [AnyObject] = []
@@ -99,65 +100,72 @@ class LoginViewController: UIViewController {
         self.qntComments = self.data.qntComments
         //        println(self.data.repoShared)
         
-        var nome =  ""
-        var color = ""
-        var repos = ""
-        var issue = ""
-        var i = 0
-        var qntComentarios:NSNumber = 0
-        
-        for repo in self.data.repoShared{
-            
-            repos = repo["nomeRepo"] as! String
-            issue = repo["issueURL"] as! String
-            
-            var repoQntComent = self.data.qntComments[i]["repo"] as! String
-            
-            if(repoQntComent == repos){
-                let formatter = NSNumberFormatter()
-                formatter.numberStyle = NSNumberFormatterStyle.NoStyle;
-                var x = self.data.qntComments[i]["quantidade"] as! String
-                if let number = formatter.numberFromString(x) {
-                    qntComentarios = number
-                }
-            }
-            
-            i++
-            
-            var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue, numeroComentarios: qntComentarios)
-            
-            
-            for label in self.labelDictionary {
-                
-                nome =  label["name"] as! String
-                color = label["color"] as! String
-                var repoName = label["repo"] as! String
-                
-                if repoName == repos{
-                    var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
-                    PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
-                } else {
-                    let newLabel = NSEntityDescription.insertNewObjectForEntityForName("Label", inManagedObjectContext: self.managedObjectContext!) as! Label
-                    
-                    newLabel.cor = color
-                    newLabel.nome = nome
-                    
-                    self.managedObjectContext?.save(&error)
-                    
-                    PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: newLabel)
-                    
-                }
-            }
-            
-        }
-        
-        
-        self.data.clearAll()
-        
         User.sharedInstance.imageData = NSData(contentsOfURL: url!)
         User.sharedInstance.name = self.usernameTextField.text
         
         self.userDefauls.setObject(self.usernameTextField.text, forKey: "login")
+        
+        
+        var x =  self.userDefauls.boolForKey("\(User.sharedInstance.name)")
+        
+        
+        if(x == false){
+            var nome =  ""
+            var color = ""
+            var repos = ""
+            var issue = ""
+            var i = 0
+            var qntComentarios:NSNumber = 0
+            
+            for repo in self.data.repoShared{
+                
+                repos = repo["nomeRepo"] as! String
+                issue = repo["issueURL"] as! String
+                
+                var repoQntComent = self.data.qntComments[i]["repo"] as! String
+                
+                if(repoQntComent == repos){
+                    let formatter = NSNumberFormatter()
+                    formatter.numberStyle = NSNumberFormatterStyle.NoStyle;
+                    var x = self.data.qntComments[i]["quantidade"] as! String
+                    if let number = formatter.numberFromString(x) {
+                        qntComentarios = number
+                    }
+                }
+                
+                i++
+                
+                var pullRequestCoreDataInstance = PullRequestManager.sharedInstance.createPullRequest(repos, issueUrl: issue, numeroComentarios: qntComentarios)
+                
+                
+                for label in self.labelDictionary {
+                    
+                    nome =  label["name"] as! String
+                    color = label["color"] as! String
+                    var repoName = label["repo"] as! String
+                    
+                    if repoName == repos{
+                        var labelCoreDataInstance = self.labelCoreDataInstance.getLabel(nome, cor: color)
+                        PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: labelCoreDataInstance)
+                    } else {
+                        let newLabel = NSEntityDescription.insertNewObjectForEntityForName("Label", inManagedObjectContext: self.managedObjectContext!) as! Label
+                        
+                        newLabel.cor = color
+                        newLabel.nome = nome
+                        
+                        self.managedObjectContext?.save(&error)
+                        
+                        PullRequestManager.sharedInstance.addLabelToPullRequest(pullRequestCoreDataInstance, label: newLabel)
+                        
+                    }
+                }
+                
+            }
+            
+        }
+        self.data.clearAll()
+        
+        self.userDefauls.setBool(self.switchDisplay.on, forKey: "\(User.sharedInstance.name)")
         
         self.performSegueWithIdentifier("showMainView", sender: self)
         self.sendingRequest = false

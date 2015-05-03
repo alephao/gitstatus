@@ -19,7 +19,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func signOut(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
         //colocar um îfi pra se o usuario mete a fita do rimeimber do loguin
-        PullRequestManager.sharedInstance.resetPullRequests()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var x = defaults.boolForKey("\(User.sharedInstance.name)")
+        if(x == false){
+            PullRequestManager.sharedInstance.resetPullRequests()
+            LabelManager.sharedInstance.resetLabels()   
+        }
     }
     
     override func viewDidLoad() {
@@ -94,9 +99,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         if indexPath.section == 1 {
-//            println(indexPath.row)
+            //            println(indexPath.row)
             let currentPullRequest = pullRequests[indexPath.row] as! PullRequest
-//            println(currentPullRequest.titulo)
+            //            println(currentPullRequest.titulo)
             //            println(currentPullRequest)
             
             cell?.title.text = currentPullRequest.titulo
