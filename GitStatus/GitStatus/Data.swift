@@ -106,8 +106,7 @@ class Data {
             
             x++
         }
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("loadedDataFromWeb", object: self)
+    NSNotificationCenter.defaultCenter().postNotificationName("loadedDataFromWeb", object: self)
         
     }
     
@@ -178,5 +177,6 @@ class Data {
         self.qntComments.removeAll(keepCapacity: false)
         self.reposName.removeAll(keepCapacity: false)
         self.dic.removeAll(keepCapacity: false)
+        self.repoShared.removeAll(keepCapacity: false)
     }
 }
